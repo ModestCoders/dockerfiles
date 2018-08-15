@@ -1,8 +1,8 @@
 # ModestCoders Dockerfiles
 
-A collection of dockerfiles to generate docker images for ModestCoders projects.
+A collection of dockerfiles to generate docker images for our projects.
 
-Dockerhub Repo: [https://hub.docker.com/u/modestcoders/dashboard/](https://hub.docker.com/u/modestcoders/dashboard/)
+* Dockerhub Repo: [https://hub.docker.com/u/modestcoders/dashboard/](https://hub.docker.com/u/modestcoders/dashboard/)
 
 ## Developers
 
