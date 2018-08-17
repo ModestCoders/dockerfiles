@@ -55,7 +55,6 @@ You can configure the following variables in your `docker-compose.yml`
 * `UNISON_GROUP`
 * `UNISON_UID`
 * `UNISON_GID`
-* `HOME`
 * `SYNC_SOURCE_BASE_PATH`
 * `SYNC_DESTINATION_BASE_PATH`
 * `SYNC_PREFER`

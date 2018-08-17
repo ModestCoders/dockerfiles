@@ -21,7 +21,6 @@ log_error_exit() {
 : ${UNISON_GROUP:="app"}
 : ${UNISON_UID:="1000"}
 : ${UNISON_GID:="1000"}
-: ${HOME:="/home/${UNISON_USER}"}
 : ${SYNC_SOURCE_BASE_PATH:="/sync"}
 : ${SYNC_DESTINATION_BASE_PATH:="/var/www/html"}
 : ${SYNC_PREFER:="newer"}
@@ -29,6 +28,26 @@ log_error_exit() {
 : ${SYNC_MAX_INOTIFY_WATCHES:=''}
 : ${SYNC_EXTRA_UNISON_PROFILE_OPTS:=''}
 : ${SYNC_NODELETE_SOURCE:="0"}
+
+log_heading "Configuration:"
+log_info "UNISON_USER: $UNISON_USER"
+log_info "UNISON_GROUP: $UNISON_GROUP"
+log_info "UNISON_UID: $UNISON_UID"
+log_info "UNISON_GID: $UNISON_GID"
+log_info "SYNC_SOURCE_BASE_PATH: $SYNC_SOURCE_BASE_PATH"
+log_info "SYNC_DESTINATION_BASE_PATH: $SYNC_DESTINATION_BASE_PATH"
+log_info "SYNC_PREFER: $SYNC_PREFER"
+log_info "SYNC_SILENT: $SYNC_SILENT"
+log_info "SYNC_MAX_INOTIFY_WATCHES: $SYNC_MAX_INOTIFY_WATCHES"
+log_info "SYNC_EXTRA_UNISON_PROFILE_OPTS: $SYNC_EXTRA_UNISON_PROFILE_OPTS"
+log_info "SYNC_NODELETE_SOURCE: $SYNC_NODELETE_SOURCE"
+
+log_heading "Setting env variable UNISON_USER=$UNISON_USER"
+export UNISON_USER=${UNISON_USER}
+
+if [ "$UNISON_USER" != "root" ]; then
+    HOME="/home/${UNISON_USER}"
+fi
 
 log_heading "Creating user ${UNISON_USER}."
 if [ ! $(getent group ${UNISON_GROUP}) ]; then
@@ -42,9 +61,9 @@ if [ ! $(getent passwd ${UNISON_USER}) ]; then
     chown -R ${UNISON_USER}:${UNISON_GROUP} ${HOME}
 fi
 
-log_heading "Configuration:"
-log_info "SYNC_SOURCE_BASE_PATH:        $SYNC_SOURCE_BASE_PATH"
-log_info "SYNC_DESTINATION_BASE_PATH:   $SYNC_DESTINATION_BASE_PATH"
+log_heading "Checking sync directories."
+log_info "SYNC_SOURCE_BASE_PATH: $SYNC_SOURCE_BASE_PATH"
+log_info "SYNC_DESTINATION_BASE_PATH: $SYNC_DESTINATION_BASE_PATH"
 
 [ -d "$SYNC_SOURCE_BASE_PATH" ] || log_error_exit "Source directory does not exist!"
 [ -d "$SYNC_DESTINATION_BASE_PATH" ] || log_error_exit "Destination directory does not exist!"
