@@ -16,10 +16,22 @@ RUN apk add --no-cache --virtual .build-dependencies build-base curl && \
     apk del .build-dependencies ocaml && \
     rm -rf /tmp/unison-${UNISON_VERSION}
 
+ENV UNISON_USER="app" \
+    UNISON_GROUP="app" \
+    UNISON_UID="1000" \
+    UNISON_GID="1000" \
+    SYNC_SOURCE_BASE_PATH="/sync" \
+    SYNC_DESTINATION_BASE_PATH="/var/www/html" \
+    SYNC_PREFER="newer" \
+    SYNC_SILENT="0" \
+    SYNC_MAX_INOTIFY_WATCHES='' \
+    SYNC_EXTRA_UNISON_PROFILE_OPTS='' \
+    SYNC_NODELETE_SOURCE="0"
+
 COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 COPY scripts/sync.sh /usr/local/bin/sync
 COPY scripts/watch.sh /usr/local/bin/watch
 
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["tail", "-f", "/dev/null"]
+CMD tail -f /dev/null

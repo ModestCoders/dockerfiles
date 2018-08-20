@@ -17,18 +17,6 @@ log_error_exit() {
   exit 1
 }
 
-: ${UNISON_USER:="app"}
-: ${UNISON_GROUP:="app"}
-: ${UNISON_UID:="1000"}
-: ${UNISON_GID:="1000"}
-: ${SYNC_SOURCE_BASE_PATH:="/sync"}
-: ${SYNC_DESTINATION_BASE_PATH:="/var/www/html"}
-: ${SYNC_PREFER:="newer"}
-: ${SYNC_SILENT:="0"}
-: ${SYNC_MAX_INOTIFY_WATCHES:=''}
-: ${SYNC_EXTRA_UNISON_PROFILE_OPTS:=''}
-: ${SYNC_NODELETE_SOURCE:="0"}
-
 log_heading "Configuration:"
 log_info "UNISON_USER: $UNISON_USER"
 log_info "UNISON_GROUP: $UNISON_GROUP"
@@ -41,9 +29,6 @@ log_info "SYNC_SILENT: $SYNC_SILENT"
 log_info "SYNC_MAX_INOTIFY_WATCHES: $SYNC_MAX_INOTIFY_WATCHES"
 log_info "SYNC_EXTRA_UNISON_PROFILE_OPTS: $SYNC_EXTRA_UNISON_PROFILE_OPTS"
 log_info "SYNC_NODELETE_SOURCE: $SYNC_NODELETE_SOURCE"
-
-log_heading "Setting env variable UNISON_USER=$UNISON_USER"
-export UNISON_USER=${UNISON_USER}
 
 if [ "$UNISON_USER" != "root" ]; then
     HOME="/home/${UNISON_USER}"
