@@ -20,9 +20,8 @@ In order to solve performance issues of directories bind-mounted with osxfs, you
 unison:
     image: modestcoders/unison:2.51.2
     volumes:
-      - app-vendor:/var/www/html/magento/vendor
+      - app-vendor:/var/www/html/vendor
       - .vendor:/sync/vendor
-      - ./magento/generated:/sync/magento/generated
     environment:
       - SYNC_SOURCE_BASE_PATH=/sync
       - SYNC_DESTINATION_BASE_PATH=/var/www/html
