@@ -34,4 +34,3 @@ COPY scripts/sync.sh /usr/local/bin/sync
 COPY scripts/watch.sh /usr/local/bin/watch
 
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD tail -f /dev/null
