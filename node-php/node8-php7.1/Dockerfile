@@ -24,5 +24,3 @@ RUN apt-get update && \
     && apt-get clean
 
 WORKDIR /var/www/html
-
-CMD tail -f /dev/null
