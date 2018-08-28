@@ -23,6 +23,10 @@ RUN apt-get update && \
         php7.1-pdo-mysql \
     && apt-get clean
 
-WORKDIR /var/www/html
+RUN mkdir -p /home/app \
+    && usermod -d /home/app -l app node \
+    && chown -R app /home/app
 
-CMD tail -f /dev/null
+USER app
+
+WORKDIR /var/www/html
