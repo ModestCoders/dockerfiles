@@ -37,13 +37,13 @@ volumes:
 * One time sync
 
 	```
-	docker-compose unison sync -path <path_to_sync>
+	docker-compose run --rm unison sync -path <path_to_sync>
 	```
 
 * Continuosly sync
 
 	```
-	docker-compose unison watch -path <path_to_sync>
+	docker-compose run --rm unison watch -path <path_to_sync>
 	```
 
 # Environment Variables
