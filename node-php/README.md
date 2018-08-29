@@ -1,7 +1,7 @@
 # Tags
 
-* `node8-php7.1` [(Dockerfile)](https://github.com/ModestCoders/dockerfiles/blob/master/node-php/node8-php7.1/Dockerfile)
-* `node8-php7.0`  [(Dockerfile)](https://github.com/ModestCoders/dockerfiles/blob/master/node-php/node8-php7.0/Dockerfile)
+* `modestcoders/node-php:node8-php7.1` [(Dockerfile)](https://github.com/ModestCoders/dockerfiles/blob/master/node-php/node8-php7.1/Dockerfile)
+* `modestcoders/node-php:node8-php7.0`  [(Dockerfile)](https://github.com/ModestCoders/dockerfiles/blob/master/node-php/node8-php7.0/Dockerfile)
 
 # Description
 
