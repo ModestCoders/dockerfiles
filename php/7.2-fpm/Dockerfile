@@ -54,6 +54,8 @@ COPY conf/php-fpm.conf /usr/local/etc/
 RUN mkdir /sock
 RUN chown -R app:app /usr/local/etc/php/conf.d /sock
 
+RUN mkdir -p /var/www/ && chown -R app:app /var/www/
+
 USER app:app
 
 VOLUME /var/www
