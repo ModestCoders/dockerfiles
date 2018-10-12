@@ -16,8 +16,7 @@ RUN apt-get update && apt-get install -y \
   vim \
   zip \
   procps \
-  sudo \
-  && rm -rf /var/lib/apt/lists/*
+  sudo
 
 RUN docker-php-ext-configure \
   gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
@@ -41,6 +40,9 @@ RUN pecl channel-update pecl.php.net \
 RUN apt-get install -y libssh2-1-dev \
   && pecl install ssh2-1.1.2 \
   && docker-php-ext-enable ssh2
+
+# Clean up apt-get update
+RUN rm -rf /var/lib/apt/lists/*
 
 RUN curl -sS https://getcomposer.org/installer | \
   php -- --install-dir=/usr/local/bin --filename=composer
