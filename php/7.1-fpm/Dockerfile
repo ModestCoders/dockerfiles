@@ -15,7 +15,9 @@ RUN apt-get update && apt-get install -y \
   mysql-client \
   vim \
   zip \
-  procps
+  procps \
+  sudo \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure \
   gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
@@ -51,7 +53,8 @@ COPY conf/php-fpm.conf /usr/local/etc/
 RUN mkdir /sock
 RUN chown -R app:app /usr/local/etc/php/conf.d /sock
 
-RUN mkdir -p /var/www/ && chown -R app:app /var/www/
+RUN mkdir -p /var/www && chown -R app:app /var/www/
+RUN echo "app ALL=(ALL) NOPASSWD: /bin/chown" >> /etc/sudoers.d/app
 
 USER app:app
 
@@ -60,3 +63,8 @@ VOLUME /var/www
 WORKDIR /var/www/html
 
 EXPOSE 9001
+
+COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT [ "docker-entrypoint.sh" ]
+CMD [ "php-fpm" ]
