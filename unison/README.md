@@ -1,6 +1,7 @@
 # Tags
 
 * `modestcoders/unison:2.51.2` [(Dockerfile)](https://github.com/ModestCoders/dockerfiles/blob/master/unison/2.51.2/Dockerfile)
+* `modestcoders/unison:2.51.2-1` [(Dockerfile)](https://github.com/ModestCoders/dockerfiles/blob/master/unison/2.51.2/Dockerfile)
 
 # Description
 Bidirectional sync between container volumes and host without the performance compromises.
