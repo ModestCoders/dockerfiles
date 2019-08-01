@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
   libpng-dev \
   libxslt1-dev \
   lsof \
-  mysql-client \
+  mariadb-client \
   vim \
   zip \
   procps \
@@ -31,6 +31,8 @@ RUN docker-php-ext-install \
   soap \
   xsl \
   zip
+
+RUN docker-php-ext-enable sodium
 
 RUN pecl channel-update pecl.php.net \
   && pecl install xdebug \
