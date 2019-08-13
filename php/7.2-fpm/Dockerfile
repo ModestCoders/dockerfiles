@@ -40,7 +40,7 @@ RUN pecl channel-update pecl.php.net \
   && docker-php-ext-enable xdebug \
   && sed -i -e 's/^zend_extension/\;zend_extension/g' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-RUN apt-get install -y libssh2-1-dev \
+RUN apt-get update && apt-get install -y libssh2-1-dev \
   && pecl install ssh2-1.1.2 \
   && docker-php-ext-enable ssh2 \
   && rm -rf /var/lib/apt/lists/*
