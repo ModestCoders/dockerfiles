@@ -1,6 +1,6 @@
 # Tags
 
-* `modestcoders/elasticsearch:6.5` [(Dockerfile)](https://github.com/ModestCoders/dockerfiles/blob/master/php/7.2-fpm/Dockerfile)
+* `modestcoders/elasticsearch:6.5` [(Dockerfile)](https://github.com/ModestCoders/dockerfiles/blob/master/elasticsearch/6.5/Dockerfile)
 
 # Description
 
