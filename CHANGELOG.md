@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.0] - 2019-09-26
+### Added
+ - Added elasticsearch image
+
 ## [1.3.0] - 2019-08-17
 ### Added
 - Added libsodium to php:7.2-fpm. [issue](https://github.com/ModestCoders/magento2-dockergento/issues/52)
