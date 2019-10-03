@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
   zip \
   procps \
   sudo \
+  wget \
   && rm -rf /var/lib/apt/lists/*
 
 RUN wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
