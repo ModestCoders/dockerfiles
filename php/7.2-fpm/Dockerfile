@@ -32,7 +32,8 @@ RUN docker-php-ext-install \
   pdo_mysql \
   soap \
   xsl \
-  zip
+  zip \
+  sockets
 
 RUN docker-php-ext-enable sodium
 
