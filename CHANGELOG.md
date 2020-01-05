@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.1] - 2020-01-05
+### Added
+- Added libsodium to php 7.1 image.
+
+### Changed
+- Upgraded libsodium library to version 1.0.18.
+
 ## [1.4.0] - 2019-09-26
 ### Added
  - Added elasticsearch image
