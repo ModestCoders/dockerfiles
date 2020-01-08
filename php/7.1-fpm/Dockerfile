@@ -33,7 +33,8 @@ RUN docker-php-ext-install \
   pdo_mysql \
   soap \
   xsl \
-  zip
+  zip \
+  sockets
 
 RUN pecl channel-update pecl.php.net \
   && pecl install xdebug \
