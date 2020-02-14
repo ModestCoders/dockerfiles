@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   zip \
   procps \
   sudo \
+  openssh-client \
   && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure \
@@ -46,20 +47,21 @@ RUN rm -f /usr/local/etc/php/conf.d/*sodium.ini \
   && make install  \
   && cd / \
   && rm -rf /tmp/libsodium  \
-  && pecl install -o -f libsodium
-
-RUN docker-php-ext-enable sodium
+  && pecl install -o -f libsodium \
+  && docker-php-ext-enable sodium
 
 RUN pecl channel-update pecl.php.net \
   && pecl install xdebug \
   && docker-php-ext-enable xdebug \
   && sed -i -e 's/^zend_extension/\;zend_extension/g' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-# Clean up apt-get update
-RUN rm -rf /var/lib/apt/lists/*
-
-RUN curl -sS https://getcomposer.org/installer | \
-  php -- --install-dir=/usr/local/bin --filename=composer
+# install composer
+RUN EXPECTED_SIGNATURE="$(curl -s https://composer.github.io/installer.sig)" \
+    && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+    && ACTUAL_SIGNATURE="$(php -r "echo hash_file('sha384', 'composer-setup.php');")" \
+    && ( if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]; then >&2 echo 'ERROR: Invalid installer signature'; rm composer-setup.php; exit 1; fi ) \
+    && php composer-setup.php --install-dir /usr/local/bin --filename=composer \
+    && php -r "unlink('composer-setup.php');"
 
 RUN groupadd -g 1000 app \
  && useradd -g 1000 -u 1000 -d /var/www -s /bin/bash app
