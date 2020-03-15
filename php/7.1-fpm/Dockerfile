@@ -34,7 +34,8 @@ RUN docker-php-ext-install \
   pdo_mysql \
   soap \
   xsl \
-  zip
+  zip \
+  sockets
 
 # Remove libsodium and install upgrading version:
 RUN rm -f /usr/local/etc/php/conf.d/*sodium.ini \
