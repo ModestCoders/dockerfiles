@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5.0] - 2020-07-03
+### Added
+ - New node-php image with php7.3.
+   - Added tags: node-php:node8-php7.3
+### Updated
+ - Improved error log for php-fpm
+   - Updated tags: php7.2-fpm, php7.3-fpm
+   - Added tags: php7.2-fpm-6, php7.3-fpm-2
+
 ## [1.4.1] - 2020-01-05
 ### Added
 - Added libsodium to php 7.1 image.
